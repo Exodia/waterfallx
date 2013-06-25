@@ -46,7 +46,11 @@ KISSY.add(function (S, Node, Waterfall) {
 
             function success(items, callback) {
                 self.__loading = 0
-                self.addItems(items, callback)
+                self.addItems(items, function () {
+                    callback && callback.apply(this, arguments)
+                    // 加载完不够一屏再次检测
+                    doScroll.call(self)
+                })
             }
 
             function end() {
