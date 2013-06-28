@@ -355,7 +355,8 @@ KISSY.add('gallery/waterfallx/1.0/loader',function (S, Node, Waterfall) {
 
         var $ = Node.all,
             win = S.Env.host || window,
-            SCROLL_TIMER = 50
+            SCROLL_TIMER = 50,
+            CHECK_TIMER = 500
 
 
         function Loader() {
@@ -398,7 +399,9 @@ KISSY.add('gallery/waterfallx/1.0/loader',function (S, Node, Waterfall) {
                 self.addItems(items, function () {
                     callback && callback.apply(this, arguments)
                     // 加载完不够一屏再次检测
-                    doScroll.call(self)
+                    setTimeout(function () {
+                        doScroll.call(self)
+                    }, CHECK_TIMER)
                 })
             }
 
