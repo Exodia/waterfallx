@@ -336,5 +336,5 @@ KISSY.add(function (S, Node, D) {
 
     return WaterFallX
 }, {
-    requires: ['node', 'dom']
+    requires: ['node', 'dom', 'event']
 })
